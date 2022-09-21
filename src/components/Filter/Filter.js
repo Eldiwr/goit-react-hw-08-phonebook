@@ -8,7 +8,7 @@ export const Filter = ({onChange, filterValue }) => {
                 type="text"
                 name="filter"
                 value={filterValue}
-                onChange={onChange}
+                onChange={event => onChange(event.target.value)}
             />
         </Label>
     );
