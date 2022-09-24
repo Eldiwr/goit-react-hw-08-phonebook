@@ -21,6 +21,7 @@ export const App = () => {
     
     if (contacts.find(contact => contact.name === name.trim())) {
       alert(`${name} is already in contacts!`);
+      return;
     } else if (name.length === 0) {
       alert(`${name} Fields must be filled!`);
       return;
