@@ -1,26 +1,22 @@
-import PropTypes from 'prop-types';
+import { useStore } from 'react-redux';
+import { selectContacts, selectFilter } from 'redux/selectors';
 import { List} from "./ContactList.styled";
 import { ContactListItem } from './ContactListItem';
 
-export const ContactList = ({ onFilter, onDelete }) => {
+export const ContactList = () => {
+
+    const contacts = useStore(selectContacts);
+    const filter = useStore(selectFilter);
+
+    const visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter));
+
     return (
         <List>
-            {onFilter.map(({ id, name, number }) => {
+            {visibleContacts.map((contact) => {
                 return (
-                    <ContactListItem key={id} contact={{ id, name, number }} onDelete={onDelete} />
+                    <ContactListItem key={contact.id} contact={contact}/>
                 );   
             })}    
         </List>
     );
-};
-
-ContactList.prototype = {
-    onFilter: PropTypes.arrayOf(
-        PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            number: PropTypes.string.isRequired,
-            id: PropTypes.string.isRequired,
-        })
-    ),
-    onDelete: PropTypes.func.isRequired,
 };

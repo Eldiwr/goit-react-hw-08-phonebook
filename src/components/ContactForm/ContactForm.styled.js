@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { Form, Field } from 'formik';
 
 export const Box = styled.div`
    padding: 40px;
 `
-export const Form = styled.form`
+export const StyledForm = styled(Form)`
    display: flex;
    flex-direction: column;  
 `
@@ -15,7 +16,7 @@ export const Label = styled.label`
 
     margin-top: 10px;
 `
-export const Input = styled.input`
+export const Input = styled(Field)`
    margin-top: 10px;
 `
 

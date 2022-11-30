@@ -1,69 +1,52 @@
-import PropTypes from 'prop-types';
-import { useState } from 'react';
-import { Form, Label, Button, Input } from './ContactForm.styled';
+import { Formik } from 'formik';
+import { useDispatch} from 'react-redux';
+import { addContact } from 'redux/contactsSlice';
+import { StyledForm, Label, Button, Input } from './ContactForm.styled';
 
-export const ContactForm = ({onSubmit}) => {
+export const ContactForm = () => {
 
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
 
-  const onHandleChange = (event) => {
-
-    const { name, value } = event.target;
-
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      case 'number':
-        setNumber(value);
-        break;
-      default:
-        return;   
-    } 
+  const initialValues = {
+    name: '',
+    number: '',
   };
    
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (values, { resetForm }) => {
 
-    onSubmit(name, number);
-    
-    setName('');
-    setNumber('');
+    console.log(values)
+
+    dispatch(addContact(values));
+    resetForm();
   };
   
   return (
-            <Form onSubmit={handleSubmit}>
-        <Label>Name
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}>
+      <StyledForm >
+        <Label htmlFor="name">Name
           <Input
             type="text"
             name="name"
+            id='name'
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
-            value={name}
-            onChange={onHandleChange}
           />    
         </Label>
         
-        <Label>Tel
+        <Label htmlFor="number">Tel
           <Input
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
-            value={number}
-            onChange={onHandleChange}
           />
         </Label>
-
             <Button type='submit'>Add contact</Button>
-
-        </Form>
+        </StyledForm>
+    </Formik>            
   )          
 }
-
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
