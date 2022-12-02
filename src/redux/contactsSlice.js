@@ -12,15 +12,7 @@ const contactsSlice = createSlice({
     initialState: { items: initialContactsState},
     reducers: {
         addContact: {
-            reducer(state, action) {
-                const name = action.payload.name;
-                if (state.items.find(contact => contact.name === name.trim())) {
-                    alert(`${name} is already in contacts!`);                    
-                    return;                   
-                } else if (name.length === 0) {                   
-                    alert(`${name} Fields must be filled!`);                   
-                    return;      
-                };               
+            reducer(state, action) {              
                 state.items.push(action.payload);
             },
 
