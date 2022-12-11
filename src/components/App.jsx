@@ -9,15 +9,13 @@ import { useGetContactsQuery } from 'redux/contactsApiSlice';
 export const App = () => {
 
   const { data } = useGetContactsQuery();
-
-  const contacts = data;
   
     return (
       <>
         <Box>
           <h1>Name contacts</h1>
           <ContactForm contacts={ data } />
-          {contacts.length >= 1 ? (
+          {data.length >= 1 ? (
             <>
               <h2>Contacts</h2>
               <Filter/>
