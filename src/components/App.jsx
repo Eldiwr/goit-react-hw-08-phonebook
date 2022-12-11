@@ -2,23 +2,26 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 import { Box } from './ContactForm/ContactForm.styled';
-import { useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
+import { useGetContactsQuery } from 'redux/contactsApiSlice';
+
+
 
 export const App = () => {
 
-  const contacts = useSelector(selectContacts);
+  const { data } = useGetContactsQuery();
+
+  const contacts = data;
   
     return (
       <>
         <Box>
           <h1>Name contacts</h1>
-          <ContactForm />
+          <ContactForm contacts={ data } />
           {contacts.length >= 1 ? (
             <>
               <h2>Contacts</h2>
               <Filter/>
-              <ContactList/>
+              <ContactList contacts={ data }/>
             </>
           ) : (<h2>No contacts yet. Fill the fields to add some.</h2>
           )}
