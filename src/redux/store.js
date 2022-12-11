@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { filterReducer } from "./filterSlice";
 import { contactsApi } from "./contactsApiSlice";
+import { setupListeners } from '@reduxjs/toolkit/query'
 
 
 export const store = configureStore({
@@ -13,3 +14,6 @@ export const store = configureStore({
     contactsApi.middleware,
   ],
 });
+
+
+setupListeners(store.dispatch)
