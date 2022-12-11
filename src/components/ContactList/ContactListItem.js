@@ -7,7 +7,7 @@ export const ContactListItem = ({ contact }) => {
     const { id, number, name } = contact;
     return (
         <>      
-            <ListItem><span>{name}</span><span> {number}</span> <Button type="button" onClick={() => deleteContact(id)}>Delete</Button></ListItem>         
+            <ListItem><span>{name}</span><span>{number}</span> <Button type="button" onClick={() => deleteContact(id)}>Delete</Button></ListItem>         
         </>             
     );
 };

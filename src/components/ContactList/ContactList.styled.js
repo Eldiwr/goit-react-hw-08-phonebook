@@ -3,14 +3,12 @@ import styled from "styled-components";
 export const List = styled.ul`
     list-style: none;
     padding: 0px;
+    max-width: 500px;
 `
 export const ListItem = styled.li`
     display: flex;
-    justify-content: space-between;
-
-    max-width: 300px;
-
     margin-top: 10px;
+    justify-content: space-between;
 `
 
 export const Button = styled.button`

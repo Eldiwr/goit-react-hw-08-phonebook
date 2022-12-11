@@ -15,7 +15,7 @@ export const App = () => {
         <Box>
           <h1>Name contacts</h1>
           <ContactForm contacts={ data } />
-          {data.length >= 1 ? (
+          {data && data.length >= 1 ? (
             <>
               <h2>Contacts</h2>
               <Filter/>
