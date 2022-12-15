@@ -1,29 +1,22 @@
-import { ContactForm } from './ContactForm/ContactForm';
-import { Filter } from './Filter/Filter';
-import { ContactList } from './ContactList/ContactList';
-import { Box } from './ContactForm/ContactForm.styled';
-import { useGetContactsQuery } from 'redux/contactsApiSlice';
-
-
+import { Routes, Route } from 'react-router-dom';
+import { AppBar } from './AppBar/AppBar';
+import { HomePage } from '../pages/HomePage';
+import { RegisterPage } from '../pages/RegisterPage';
+import { PhoneBookPage } from '../pages/PhoneBookPage';
+import { LoginPage } from '../pages/LoginPage';
 
 export const App = () => {
 
-  const { data } = useGetContactsQuery();
+  
   
     return (
-      <>
-        <Box>
-          <h1>Name contacts</h1>
-          <ContactForm contacts={ data } />
-          {data && data.length >= 1 ? (
-            <>
-              <h2>Contacts</h2>
-              <Filter/>
-              <ContactList contacts={ data }/>
-            </>
-          ) : (<h2>No contacts yet. Fill the fields to add some.</h2>
-          )}
-        </Box>
-      </>     
+      <Routes>
+        <Route path='/' element={<AppBar />}>
+          <Route index element={<HomePage />} />
+          <Route path='/register' element={<RegisterPage />} />
+          <Route path='/contacts' element={<PhoneBookPage />} />
+          <Route path='/login' element={<LoginPage/>} />
+        </Route>
+      </Routes>     
     )
 };
