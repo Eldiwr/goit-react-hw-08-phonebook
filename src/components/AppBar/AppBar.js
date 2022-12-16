@@ -1,7 +1,13 @@
 import { Outlet } from "react-router-dom";
 import { Header, NavContainer, NavLinks } from "./AppBar.styled";
+import { AuthNav } from "components/AuthNav/AuthNav";
+import { UserMenu } from "components/UserMenu/UserMenu";
+import { useSelector } from "react-redux";
+import {selectIsLoggedIn} from "redux/selectors"
 
 export const AppBar = () => {
+    
+    const isLoggedIn = useSelector(selectIsLoggedIn);
 
     return (
         <>
@@ -9,13 +15,12 @@ export const AppBar = () => {
                 <NavContainer>
                     <div>
                         <NavLinks to={"/"} end>Home</NavLinks>
-                        <NavLinks to={"/contacts"}>PhoneBook</NavLinks>
+                        {isLoggedIn && <NavLinks to={"/contacts"}>PhoneBook</NavLinks>}     
                     </div>
 
                     <div>
-                        <NavLinks to={"/register"}>Register</NavLinks>
-                        <NavLinks to={"/login"}>Login</NavLinks> 
-                    </div>                
+                        {isLoggedIn ? <UserMenu /> : <AuthNav />} 
+                    </div>                                  
                 </NavContainer>
             </Header>
             <Outlet/>

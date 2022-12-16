@@ -13,8 +13,9 @@ export const Header = styled.header`
 export const NavContainer = styled.nav`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 25px;
-    width: 1200px;
+    width: 1980px;
 `;
 
 export const NavLinks= styled(NavLink)`

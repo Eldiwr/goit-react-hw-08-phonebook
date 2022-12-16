@@ -1,5 +1,5 @@
 import { ListItem, Button } from './ContactList.styled';
-import { useDeleteContactMutation } from 'redux/contactsApiSlice';
+import { useDeleteContactMutation } from 'redux/contacts/contactsApiSlice';
 
 export const ContactListItem = ({ contact }) => {
 

@@ -1,17 +1,24 @@
+import { useDispatch } from 'react-redux';
 import { Formik } from "formik";
+import { logIn } from 'redux/auth/operations';
 import {StyledForm, Label, Input, Button} from "../LoginForm/LoginForm.styled";
 
 export const LoginForm = () => {
 
+    const dispatch = useDispatch();
+
     const initialValues = {
-        name: '',
         email: '',
         password: '',
-    }
+    };
 
-    const handleSubmit = () => {
-
-    }
+    const handleSubmit = (values, { resetForm }) => {
+        dispatch(logIn({
+            email: values.email,
+            password: values.password,
+        }));
+        resetForm();
+    };
 
     return (
         <Formik
@@ -19,10 +26,10 @@ export const LoginForm = () => {
             onSubmit = {handleSubmit}
         >
             <StyledForm>
-                <Label>Name
+                <Label>Email
                     <Input
-                        type="text"
-                        name="name"
+                        type="email"
+                        name="email"
                     />
                 </Label>
                 <Label>Password

@@ -1,5 +1,5 @@
 import { Formik } from 'formik';
-import { useAddContactMutation } from 'redux/contactsApiSlice';
+import { useAddContactMutation } from 'redux/contacts/contactsApiSlice';
 import { StyledForm, Label, Button, Input } from './ContactForm.styled';
 
 export const ContactForm = ({contacts}) => {
