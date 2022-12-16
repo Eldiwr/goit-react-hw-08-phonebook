@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { filterUpdate } from 'redux/contacts/filterSlice';
+import { updateFilter } from 'redux/contacts/contactsSlice';
 import { selectFilter } from 'redux/selectors';
 import { Label, Input } from "./Filter.styled";
 
@@ -14,7 +14,7 @@ export const Filter = () => {
                 type="text"
                 name="filter"
                 value={filter}
-                onChange={event => dispatch(filterUpdate(event.target.value))}
+                onChange={event => dispatch(updateFilter(event.target.value))}
             />
         </Label>
     );

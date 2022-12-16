@@ -3,7 +3,7 @@ import { selectFilter } from 'redux/selectors';
 import { List} from "./ContactList.styled";
 import { ContactListItem } from './ContactListItem';
 
-export const ContactList = ({contacts}) => {
+export const ContactList = ({ contacts }) => {
 
     const filter = useSelector(selectFilter);
 

@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { filterReducer } from "./contacts/filterSlice";
-import { contactsApi } from "./contacts/contactsApiSlice";
+// import { filterReducer } from "./contacts/filterSlice";
+import { contactsReducer } from "./contacts/contactsSlice";
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { authReducer } from "./auth/slice";
 import {
@@ -18,17 +18,15 @@ import {
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    [contactsApi.reducerPath]: contactsApi.reducer,
-    filter: filterReducer,
+    contacts: contactsReducer, 
+    // filter: filterReducer,
   },
-  middleware: (getDefaultMiddleware) =>[
-    ...getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
-    contactsApi.middleware,
-  ],
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 
