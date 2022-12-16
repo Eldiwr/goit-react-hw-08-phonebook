@@ -1,4 +1,3 @@
-// export const selectFilter = state => state.filter.value;
 export const selectFilter = state => state.contacts.filter;
 
 export const selectIsLoggedIn = state => state.auth.isLoggedIn;
