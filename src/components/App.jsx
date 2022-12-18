@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 import { AppBar } from './AppBar/AppBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
@@ -24,7 +24,6 @@ export const App = () => {
   }, [dispatch]);
   
     return isRefreshing ? (<b>Refreshing user...</b>) : (
-      <Suspense>
       <Routes>
         <Route path="/" element={<AppBar />} >
         <Route index element={<HomePage />} />
@@ -41,7 +40,6 @@ export const App = () => {
         }
         />
       </Route>
-      </Routes> 
-      </Suspense>    
+      </Routes>    
     )
 };

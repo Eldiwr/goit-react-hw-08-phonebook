@@ -4,6 +4,7 @@ import { AuthNav } from "components/AuthNav/AuthNav";
 import { UserMenu } from "components/UserMenu/UserMenu";
 import { useSelector } from "react-redux";
 import {selectIsLoggedIn} from "redux/selectors"
+import { Suspense } from "react";
 
 export const AppBar = () => {
     
@@ -23,7 +24,10 @@ export const AppBar = () => {
                     </div>                                  
                 </NavContainer>
             </Header>
-            <Outlet/>
+            <Suspense>
+                <Outlet/>
+            </Suspense>
+            
         </>
         
     );
