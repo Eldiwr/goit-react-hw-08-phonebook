@@ -17,7 +17,7 @@ const styles = {
   },
 };
 
-export const HomePage = () => {
+export default function HomePage () {
 
     return (
         <div style={styles.container}>           

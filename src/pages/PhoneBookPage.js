@@ -8,7 +8,7 @@ import { fetchContacts } from 'redux/contacts/operations';
 import { useEffect } from 'react';
 
 
-export const PhoneBookPage = () => {
+export default function PhoneBookPage () {
    
     const dispatch = useDispatch();
     const contacts = useSelector(selectContacts);          
