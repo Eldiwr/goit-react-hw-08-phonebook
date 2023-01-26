@@ -11,24 +11,24 @@ export const AppBar = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
 
     return (
-        <>
-            <Header>
-                <NavContainer>
-                    <div>
-                        <NavLinks to={"/"} end>Home</NavLinks>
-                        {isLoggedIn && <NavLinks to={"/contacts"}>PhoneBook</NavLinks>}     
-                    </div>
+      <>
+        <Header>
+          <NavContainer>
+            <div>
+              <NavLinks to={'/'} end>
+                Home
+              </NavLinks>
+              {isLoggedIn && <NavLinks to={'/contacts'}>PhoneBook</NavLinks>}
+            </div>
 
-                    <div>
-                        {isLoggedIn ? <UserMenu /> : <AuthNav />} 
-                    </div>                                  
-                </NavContainer>
-            </Header>
-            <Suspense>
-                <Outlet/>
-            </Suspense>
-            
-        </>
-        
+            <div>{isLoggedIn ? <UserMenu /> : <AuthNav />}</div>
+          </NavContainer>
+        </Header>
+        <Suspense>
+          <main>
+            <Outlet />
+          </main>
+        </Suspense>
+      </>
     );
 };

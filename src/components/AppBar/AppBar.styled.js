@@ -6,16 +6,15 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   min-height: 60px;
-  margin-bottom: 16px;
   box-shadow: 0px 8px 15px -5px rgba(34, 60, 80, 0.6);
 `;
 
 export const NavContainer = styled.nav`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px;
-    width: 1980px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
 `;
 
 export const NavLinks= styled(NavLink)`

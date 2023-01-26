@@ -4,16 +4,16 @@ import { Form, Field } from 'formik';
 export const StyledForm = styled(Form)`
    display: flex;
    flex-direction: column;  
-   padding: 30px;
+   padding: 40px;
 `
 
 export const Label = styled.label`
     display: flex;
     flex-direction: column;
-
     margin-top: 10px;
 `
 export const Input = styled(Field)`
+   width: 70%;
    height: 45px;
    padding-left: 20px;
    margin-top: 10px;
