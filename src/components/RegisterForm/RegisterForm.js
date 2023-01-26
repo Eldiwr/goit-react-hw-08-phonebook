@@ -23,35 +23,39 @@ export const RegisterForm = () => {
     };
 
     return (
-        <Formik
-            initialValues={ initialValues }
-            onSubmit = {handleSubmit}
-        >
-            <StyledForm>
-                <Label>Name
-                    <Input
-                        type="text"
-                        name="name"
-                        required 
-                    />                  
-                </Label>
-                <Label>Email
-                    <Input
-                        type="email"
-                        name="email"
-                        required 
-                    />
-                </Label>
-                <Label>Password
-                    <Input
-                        type="password"
-                        name="password"
-                        required 
-                    />
-                </Label>
-                <Button type="submit">Sign Up</Button>
-            </StyledForm>
-        </Formik>
-
-    )
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        <StyledForm>
+          <Label>
+            Name
+            <Input
+              placeholder="Please enter your name"
+              type="text"
+              name="name"
+              required
+            />
+          </Label>
+          <Label>
+            Email
+            <Input
+              placeholder="Please enter your email"
+              type="email"
+              name="email"
+              required
+            />
+          </Label>
+          <Label>
+            Password
+            <Input
+              placeholder="Please create your password"
+              type="password"
+              name="password"
+              pattern="(?=.*\d)(?=.*[a-z]).{10,}"
+              title="Must contain at least one number and one lowercase letter, and at least 8 or more characters"
+              required
+            />
+          </Label>
+          <Button type="submit">Sign Up</Button>
+        </StyledForm>
+      </Formik>
+    );
 }
